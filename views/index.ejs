@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Get posts</title>
+    <link href = "/style.css" rel="stylesheet">
+</head>
+<body>
+    <h1> Quora Posts</h1>
+ 
+    <% for ( let post of posts){ %>
+    <div class="user">
+        <div class="border">
+            username :  <%= post.username %>
+        <br><br><br>
+        content:  <%= post.content%>
+        <br><br><br>
+        <a href="http://localhost:8080/posts/<%=post.id%>"> view detais</a>
+        <a href="http://localhost:8080/posts/<%=post.id%>/edit"> Edit post</a>
+        </div>
+        <form method="post", action="/posts/<%=post.id%>?_method=DELETE">
+            <button>DELETE POST</button>
+        </form>
+    </div>  
+        <br> <br>
+    <% } %> 
+
+    <a href="http://localhost:8080/posts/new" >add posts </a>
+
+    <script src="/index.js" ></script>
+    
+</body>
+</html>
