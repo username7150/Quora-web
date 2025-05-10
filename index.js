@@ -65,6 +65,15 @@ app.get("/posts/:id", (req, res) => {
 });
 
 
+app.get("/posts/:id/edit", (req, res) => {
+    
+    let {id}= req.params;
+    let post =posts.find((p)=> id ===p.id);
+    res.render("form2.ejs", { post });
+    console.log(post);
+});
+
+
 app.patch( "/posts/:id", (req, res)=>{
     let { id }= req.params; 
     let newcontent=req.body.likhacontent
@@ -77,13 +86,6 @@ app.patch( "/posts/:id", (req, res)=>{
     
 });
 
-app.get("/posts/:id/edit", (req, res) => {
-    
-    let {id}= req.params;
-    let post =posts.find((p)=> id ===p.id);
-    res.render("form2.ejs", { post });
-    console.log(post);
-});
 
 app.delete("/posts/:id" ,(req,res)=>{
     let {id}= req.params;
